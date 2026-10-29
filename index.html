@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CinePass India | Book Indian & Pan-India Blockbusters in IMAX, 4DX & Dolby</title>
+  <meta name="description" content="Book movie tickets for Pushpa 2, Kalki 2898 AD, Kantara 1, Singham Again in IMAX, 4DX, and Dolby Atmos with UPI and RuPay payments." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="cine-header">
+    <a href="#" class="cine-logo">
+      <div class="cine-logo-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="5 3 19 12 5 21 5 3"/>
+        </svg>
+      </div>
+      <div>CINE<span>PASS</span></div>
+    </a>
+
+    <div class="header-center">
+      <!-- City Picker -->
+      <div class="city-picker">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+          <circle cx="12" cy="10" r="3"/>
+        </svg>
+        <select class="city-select" id="citySelect" aria-label="Select City"></select>
+      </div>
+
+      <!-- Real-time Search -->
+      <div class="header-search">
+        <svg class="header-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" id="searchInput" placeholder="Search movies, actors, directors..." />
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <!-- Audio Effects Toggle -->
+      <button class="btn-icon-nav" id="audioToggleBtn" title="Toggle Sound Effects">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+        </svg>
+      </button>
+      <span id="audioToggleText" style="display:none;">Sound ON</span>
+
+      <!-- My Tickets Drawer Trigger -->
+      <button class="btn-my-tickets" id="myTicketsBtn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M2 9a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V9z"/>
+          <path d="M9 21V9"/>
+        </svg>
+        <span>My Passes</span>
+        <span class="ticket-badge" id="ticketsCountBadge" style="display:none;">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Carousel Showcase -->
+  <section class="hero-section">
+    <div class="hero-slider-track" id="heroTrack"></div>
+    <div class="hero-nav-dots" id="heroDots"></div>
+  </section>
+
+  <!-- Controls: 7-Day Date Strip & Genre Pills -->
+  <div class="controls-container">
+    <div class="date-strip-wrapper">
+      <div class="section-label">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+          <line x1="16" y1="2" x2="16" y2="6"/>
+          <line x1="8" y1="2" x2="8" y2="6"/>
+          <line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+        SELECT DATE & SHOWTIME
+      </div>
+      <div class="date-strip" id="dateStrip"></div>
+    </div>
+
+    <div class="genre-filter-bar">
+      <div class="genre-pills" id="genrePills"></div>
+      <div class="results-meta" id="catalogMeta">Showing all movies</div>
+    </div>
+  </div>
+
+  <!-- Movie Catalog Grid -->
+  <main class="catalog-section">
+    <div class="movies-grid" id="moviesGrid"></div>
+  </main>
+
+  <!-- VIP Cinema Perks Strip -->
+  <section style="background: rgba(18, 23, 37, 0.4); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); padding: 3rem 2.5rem; margin-bottom: 4rem;">
+    <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; text-align: center;">
+      <div>
+        <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">🔊</div>
+        <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem;">Dolby Atmos 64-Ch</h4>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">True multi-dimensional immersive audio moving all around you.</p>
+      </div>
+      <div>
+        <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">📽️</div>
+        <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem;">IMAX with Laser</h4>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Next-generation 4K dual laser projection for unmatched contrast.</p>
+      </div>
+      <div>
+        <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">🛋️</div>
+        <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem;">VIP Motorized Recliners</h4>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Plush heated Italian leather seats with personal side table & USB.</p>
+      </div>
+      <div>
+        <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">⚡</div>
+        <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem;">Instant QR Boarding</h4>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Bypass all box-office lines with seamless scan-and-enter pass.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="padding: 2.5rem; text-align: center; border-top: 1px solid var(--border-subtle); color: var(--text-muted); font-size: 0.85rem;">
+    <div style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.25rem; flex-wrap: wrap;">
+      <a href="#" style="color: var(--text-muted); text-decoration: none;">About CinePass</a>
+      <a href="#" style="color: var(--text-muted); text-decoration: none;">Privacy Policy</a>
+      <a href="#" style="color: var(--text-muted); text-decoration: none;">Terms of Service</a>
+      <a href="#" style="color: var(--text-muted); text-decoration: none;">Corporate Bookings</a>
+      <a href="#" style="color: var(--text-muted); text-decoration: none;">Support & Help</a>
+    </div>
+    <p>© 2026 CinePass India Cinema Group. All rights reserved. Made with ❤️ for Indian cinema lovers.</p>
+  </footer>
+
+  <!-- =======================================================================
+       Multi-Step Booking Modal
+       ======================================================================= -->
+  <div class="modal-overlay" id="bookingModal" role="dialog" aria-modal="true">
+    <div class="booking-modal-container">
+      <div class="modal-header">
+        <div class="modal-movie-info">
+          <img src="" alt="" class="modal-poster-thumb" id="modalPosterThumb" />
+          <div>
+            <h3 class="modal-movie-title" id="modalMovieTitle">Movie Title</h3>
+            <div class="modal-movie-sub" id="modalMovieSub">Runtime • Rating</div>
+          </div>
+        </div>
+
+        <div class="step-indicator-bar">
+          <div class="step-node active" data-step="1">
+            <div class="step-circle">1</div>
+            <span>Time</span>
+          </div>
+          <div class="step-line"></div>
+          <div class="step-node" data-step="2">
+            <div class="step-circle">2</div>
+            <span>Seats</span>
+          </div>
+          <div class="step-line"></div>
+          <div class="step-node" data-step="3">
+            <div class="step-circle">3</div>
+            <span>Snacks</span>
+          </div>
+          <div class="step-line"></div>
+          <div class="step-node" data-step="4">
+            <div class="step-circle">4</div>
+            <span>Pay</span>
+          </div>
+          <div class="step-line"></div>
+          <div class="step-node" data-step="5">
+            <div class="step-circle">5</div>
+            <span>Ticket</span>
+          </div>
+        </div>
+
+        <button class="btn-close-modal" id="btnCloseBookingModal" aria-label="Close modal">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-body" id="modalBody">
+        <!-- Injected dynamically by step -->
+      </div>
+    </div>
+  </div>
+
+  <!-- =======================================================================
+       Trailer Video Modal
+       ======================================================================= -->
+  <div class="modal-overlay" id="trailerModal" role="dialog" aria-modal="true">
+    <div class="video-modal-wrap">
+      <button class="btn-close-modal" id="btnCloseTrailerModal" style="position: absolute; top: 1rem; right: 1rem; z-index: 10; background: rgba(0,0,0,0.6);" aria-label="Close trailer">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <div class="video-responsive-16-9" id="trailerIframeWrap"></div>
+    </div>
+  </div>
+
+  <!-- =======================================================================
+       My Bookings Slide-out Drawer
+       ======================================================================= -->
+  <div class="drawer-overlay" id="drawerOverlay">
+    <div class="bookings-drawer">
+      <div class="drawer-header">
+        <div style="display:flex; align-items:center; gap:0.5rem;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M2 9a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V9z"/>
+            <path d="M9 21V9"/>
+          </svg>
+          <h3 style="font-weight: 800; font-size: 1.25rem;">My Active Passes</h3>
+        </div>
+        <button class="btn-close-modal" id="btnCloseDrawer" aria-label="Close drawer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="drawer-body" id="savedBookingsList">
+        <!-- Injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Toast Notifications -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- App Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/qr.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
