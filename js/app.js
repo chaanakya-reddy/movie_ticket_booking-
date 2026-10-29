@@ -1123,20 +1123,37 @@
   // ==========================================================================
   function openTrailer(trailerUrl, movieTitle) {
     if (!trailerUrl) return;
+    const videoId = trailerUrl.split('/').pop().split('?')[0];
+    const directWatchUrl = `https://www.youtube.com/watch?v=${videoId}`;
     DOM.trailerIframeWrap.innerHTML = `
       <iframe 
         src="${trailerUrl}?autoplay=1&rel=0&modestbranding=1" 
-        title="${movieTitle} Trailer" 
+        title="${movieTitle} Official Trailer / Glimpse" 
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
         allowfullscreen>
       </iframe>
     `;
+    const captionBar = document.getElementById('trailerCaptionBar');
+    if (captionBar) {
+      captionBar.innerHTML = `
+        <div style="display:flex; align-items:center; gap:0.5rem;">
+          <span style="font-size:0.75rem; background:rgba(229,9,20,0.2); color:#ff4d58; padding:0.2rem 0.5rem; border-radius:4px; font-weight:700; border:1px solid rgba(229,9,20,0.4);">ORIGINAL AUDIO</span>
+          <span style="font-size:0.9rem; font-weight:700; color:#fff;">${movieTitle} — Official Glimpse / Trailer</span>
+        </div>
+        <a href="${directWatchUrl}" target="_blank" rel="noopener noreferrer" style="font-size:0.82rem; color:var(--accent-gold); text-decoration:none; display:inline-flex; align-items:center; gap:0.35rem; font-weight:600; padding:0.35rem 0.75rem; background:rgba(245,197,24,0.1); border-radius:6px; border:1px solid rgba(245,197,24,0.3);">
+          <span>Watch on YouTube</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      `;
+    }
     DOM.trailerModal.classList.add('active');
   }
 
   function closeTrailerModal() {
     DOM.trailerModal.classList.remove('active');
     DOM.trailerIframeWrap.innerHTML = '';
+    const captionBar = document.getElementById('trailerCaptionBar');
+    if (captionBar) captionBar.innerHTML = '';
   }
 
   // ==========================================================================
