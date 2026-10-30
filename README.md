@@ -1,6 +1,19 @@
 # 🎬 CinePass India - Realistic Indian Cinema & Movie Ticket Booking
 
-**CinePass India** is an authentic Indian cinema booking platform featuring major upcoming releases like **Ramayana**, **Fauzi (Fauji)**, **Varanasi**, **NTR Dragon**, **Spirit**, **Pushpa 2**, **Kalki 2898 AD**, and **Kantara 1** with genuine movie posters, Indian Rupee (₹) pricing, and instant UPI checkout.
+[![Live Website](https://img.shields.io/badge/Live%20Website-Click%20Here-success?style=for-the-badge&logo=google-chrome&logoColor=white)](https://chaanakya-reddy.github.io/movie_ticket_booking-/)
+[![GitHub Pages](https://img.shields.io/badge/Hosted%20on-GitHub%20Pages-blue?style=for-the-badge&logo=github)](https://chaanakya-reddy.github.io/movie_ticket_booking-/)
+
+🌐 **Live Website Link**: **[https://chaanakya-reddy.github.io/movie_ticket_booking-/](https://chaanakya-reddy.github.io/movie_ticket_booking-/)**
+
+---
+
+**CinePass India** is a realistic, feature-rich Indian cinema booking platform featuring major upcoming releases like **Ramayana**, **Fauzi (Fauji)**, **Varanasi**, **NTR Dragon**, **Spirit**, **Pushpa 2**, **Kalki 2898 AD**, and **Kantara 1** with genuine movie posters, authentic original-language trailers, Indian Rupee (₹) pricing, and instant UPI checkout (Google Pay, PhonePe, Paytm, BHIM, Cred, RuPay).
+
+---
+
+## 🌐 Live Website Access
+The website is deployed live on GitHub Pages and is fully functional on mobile and desktop:
+👉 **[Open Live CinePass App](https://chaanakya-reddy.github.io/movie_ticket_booking-/)**
 
 ---
 
